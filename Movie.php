@@ -1,7 +1,6 @@
 <?php
 
-class Movie
-{
+class Movie {
     public $titolo;
     public $trama;
     public $cast;
@@ -35,8 +34,9 @@ $film_1->setSconto($film_1->eta_utente);
 $film_2 = new Movie('Il matrimonio del mio migliore amico', 28);
 $film_2->cast = 'Julia Roberts, Dermot Mulroney, Cameron Diaz';
 $film_2->regista = 'P. J. Hogan';
+$film_2->setSconto($film_2->eta_utente);
 
-
+$films = [$film_1,$film_2];
 ?>
 
 <!DOCTYPE html>
@@ -51,15 +51,12 @@ $film_2->regista = 'P. J. Hogan';
 
 <body>
     <h1>Film:</h1>
-    <div class="film-1">
-        <h2>Titolo: <?= $film_1->titolo ?></h2>
-        <p>Cast: <?= $film_1->cast ?></p>
-        <p>Sconto cinema: <?= $film_1->getSconto() ?></p>
-    </div>
-    <div class="film-2">
-        <h2>Titolo: <?= $film_2->titolo ?></h2>
-        <p>Cast: <?= $film_2->cast ?></p>
-        <p>Sconto cinema: <?= $film_2->getSconto() ?></p>
+    <div class="film">
+        <?php foreach ( $films as $film ){ ?>
+            <h2><?= $film->titolo ?></h2>
+            <p>Cast: <?= $film->cast ?></p>
+            <p>Sconto cinema: <?= $film->getSconto() ?></p>
+        <?php } ?>
     </div>
 </body>
 
